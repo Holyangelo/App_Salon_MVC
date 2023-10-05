@@ -9,7 +9,8 @@ use MVC\Router;
 class LoginController{
 	//Creamos un metodo de inicio de sesion
 	public static function login(Router $router){
-		echo "LoginController";
+		$router->render('auth/login',[
+		]);
 	}
 
 	//Creamos el metodo para cerrar sesion
