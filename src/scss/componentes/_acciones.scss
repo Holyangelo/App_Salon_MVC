@@ -1,0 +1,24 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.acciones{
+
+	margin-top: v.$separacion;
+
+	@include m.tablet{
+		display: flex;//accedemos a las propiedades del flex
+		justify-content: space-between; //genera un espacio entre los elementos
+	}
+
+	a{
+		display:block;
+		color: v.$blanco;
+		text-decoration:none;
+		margin-bottom: calc(v.$separacion / 2);
+		text-align: center;
+
+		span{
+			font-weight: v.$bold;
+		}
+	}
+}

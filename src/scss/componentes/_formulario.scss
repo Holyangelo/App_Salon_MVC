@@ -1,0 +1,26 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.formulario{
+	margin-top: v.$separacion;
+	width: 100%;
+}
+
+.campo{
+
+	display: flex; //obtenemos acceso a las propiedades del flex
+	align-items: center;
+	margin-bottom: 2rem;
+
+	label{
+		flex: 0 0 10rem; //alineamo los label de forma vertical a la izquierda 
+		//con un maximo de 100px
+	}
+
+	input{
+		flex: 1; //toman el resto del tamaño
+		border: none;
+		border-radius: 1rem;
+		padding: calc(v.$separacion / 4); //añadimos margen interno
+	}
+}
