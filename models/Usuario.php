@@ -98,6 +98,58 @@ class Usuario extends ActiveRecord{
 		}
 	}
 
+	public function validarLogin(){
+		$matches = null;
+		/*llamamos al email del objeto, y validamos que exista uno ingresado*/
+		if (!$this->email) {
+			/*Si no existe mostramos un error*/
+			self::$alertas['error'][] = 'El email es obligatorio';
+		}
+
+		/*llamamos al password del objeto, y validamos que exista uno ingresado*/
+		if (!$this->password) {
+			/*Si no existe mostramos un error*/
+			self::$alertas['error'][] = 'El password es obligatorio';
+		}else if(!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $this->password, $matches)){
+			self::$alertas['error'][] = "Patron de password es incorrecto<br> Password debe contener al menos 1 letra mayuscula al inicio, 1 numero y 1 caracter especial";
+		}
+
+		return self::$alertas;
+	}
+
+	public function validarEmail(){
+		/*llamamos al email del objeto, y validamos que exista uno ingresado*/
+		if (!$this->email) {
+			/*Si no existe mostramos un error*/
+			self::$alertas['error'][] = 'El email es obligatorio';
+		}
+
+		return self::$alertas;
+	}
+
+	public function validarPassword(){
+		if (!$this->password) {
+			self::$alertas['error'][] = "El campo password no puede estar vacio";
+		}else if(strlen($this->password) < 8){
+			self::$alertas['error'][] = "El password debe contener al menos 8 caracteres";
+		}else if(!preg_match('/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}$/', $this->password, $matches)){
+			self::$alertas['error'][] = "Patron de password es incorrecto";
+		}
+
+		return self::$alertas;
+	}
+
+	public function validarPasswordAndConfirmado($password){
+		/*Compara el password que escribio el usuario, el password almacenado en el objeto de la db*/
+		$resultado = password_verify($password, $this->password);
+		/*retornamos el resultado: true o false*/
+		if(!$resultado || !$this->confirmado){
+			self::$alertas['error'][] = "Password incorrecto o tu cuenta no esta confirmada";
+		}else{
+			return true;
+		}
+	}
+
 
 }
 ?>

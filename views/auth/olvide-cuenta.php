@@ -1,7 +1,8 @@
 <h1 class="nombre-pagina">Olvide Password</h1>
 <p class="descripcion-pagina">Ingresa tu email para recuperar tu password</p>
+<?php require_once __DIR__.'/../templates/alertas.php'?>
 <!--Formulario-->
-<form class="formulario" method="post" action="/crear-cuenta" enctype="multipart/form-data">
+<form class="formulario" method="post" action="/olvide" enctype="multipart/form-data">
     <div class="campo">
         <label for="email">Email</label>
         <input type="email" name="email" id="email" placeholder="Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" required>

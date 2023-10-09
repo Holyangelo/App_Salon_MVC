@@ -62,6 +62,45 @@ class Email{
         return false;
     }
 }
+
+/*Enviar email - Recuperar Password*/
+    public function enviarInstrucciones(){
+        /*crear el objeto de email*/
+        //Create an instance; passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+        try {
+        //Server settings
+        //$mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+        $mail->isSMTP();
+        $mail->Host = 'sandbox.smtp.mailtrap.io';  //Set the SMTP server 
+        $mail->SMTPAuth = true; //Enable SMTP authentication
+        $mail->Port = 2525;//TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+        $mail->Username = 'efaf6a30613775'; //SMTP username
+        $mail->Password = '29823b6c8e6a60'; //SMTP password                                      
+
+        //Recipients
+        $mail->setFrom('localhost.robot@gmail.com', 'Mailer');
+        $mail->addAddress($this->email, $this->nombre);     //Add a recipient
+        $mail->addReplyTo('localhost.robot@gmail.com', 'Information');
+
+        //Content
+        $mail->isHTML(true);                                  //Set email format to HTML
+        $mail->Charset = 'UTF-8';   //Using Decode UTF-8
+        $mail->Subject = 'Token for Renew Password';
+        $content = '<html>';
+        $content .= 'This is your token for Renew your password: <b>'.$this->token.'</b>';
+        $content .= '<span>  put here for renew : <a href="http://localhost:3000/recuperar?token='.$this->token.'">Renew Password</a></span>';
+        $content .= '</html>';
+        $mail->Body    = $content;
+        
+        if($mail->send()){
+            return true;
+        }
+    }catch (Exception $e) {
+        echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        return false;
+    }
+}
 }
 
 ?>
