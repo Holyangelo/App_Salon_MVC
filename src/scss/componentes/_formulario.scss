@@ -22,5 +22,12 @@
 		border: none;
 		border-radius: 1rem;
 		padding: calc(v.$separacion / 4); //añadimos margen interno
+
+		&:disabled{ //seleccionamos el atributo disabled del input
+			background-color: lighten(v.$negro, 50%);
+			color: v.$blanco;
+			font-weight: v.$bold;
+			cursor: not-allowed; //Evitamos que se muestre el puntero
+		}
 	}
 }

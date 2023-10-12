@@ -5,6 +5,8 @@ require_once __DIR__ . '/../includes/app.php';
 /*importamos los metodos y controladores*/
 use MVC\Router;
 use Controllers\LoginController;
+use Controllers\CitaController;
+use Controllers\APIController;
 
 /*Router instancia*/
 $router = new Router();
@@ -44,6 +46,16 @@ $router->get('/confirmar-cuenta', [LoginController::class, 'confirmar']);
 //GET
 $router->get('/mensaje', [LoginController::class, 'mensaje']);
 
+
+/* AREA PRIVADA (SOLO CON LOGIN)*/
+/* 5.- CITAS */
+
+//GET
+$router->get('/cita', [CitaController::class, 'index']);
+
+/*AREA DE API - CITAS*/
+/* 6.- CITAS API */
+$router->get('/api/servicios', [APIController::class, 'index']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

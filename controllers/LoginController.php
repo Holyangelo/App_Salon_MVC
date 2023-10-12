@@ -269,5 +269,8 @@ class LoginController{
 			'alertas' => $alertas
 		]);
 	}
+
+
+	//creamos el metodo para renderizar cita
 }
 ?>

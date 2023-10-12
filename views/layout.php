@@ -21,4 +21,10 @@
     
     <!-- ========================================================================================-->
     <!--Javascript Files -->
+    <?php 
+    //con esta variable podemos mostrar un template de scripts 
+    // y si no requiero los scripts y no tiene ninguna variable de scripts 
+    //muestra un string vacio
+    echo $script ?? ''; 
+    ?>
 </html>
