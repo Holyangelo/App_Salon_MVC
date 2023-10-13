@@ -1,7 +1,10 @@
+//2- variable paso
 let paso = 1;
-//esto se crea despues de paginasiguiente y anterior
+//3- esto se crea despues de paginasiguiente y anterior
 const inicial = 1;
 const final = 3;
+
+//
 
 /*DOMContentLoaded – el navegador HTML está completamente cargado y 
 el árbol DOM está construido, pero es posible que los recursos externos como <img> 
@@ -11,17 +14,17 @@ document.addEventListener("DOMContentLoaded", () =>{
 });
 
 const iniciarApp = () =>{
-	//mostramos las secciones
+	//2- mostramos las secciones
 	mostrarSeccion();
-	//registramos las funciones que utilizaremos
+	// 1- registramos las funciones que utilizaremos
 	tabs(); //cambia la seccion cuando se presionan los tabs
-	//agrega o quita los botones del paginador
+	//3- agrega o quita los botones del paginador
 	botonesPaginador();
-	//incrementar el valor de paso y pasa la siguiente pagina
+	//3- incrementar el valor de paso y pasa la siguiente pagina
 	paginaSiguiente();
-	//decrementa el valor de paso y devuelve a lpagina anterior
+	//3- decrementa el valor de paso y devuelve a lpagina anterior
 	paginaAnterior();
-	//ESTO SE CREA LUEGO DE QUE CREARAMOS EL CONTROLADOR DE LA API
+	//4 - ESTO SE CREA LUEGO DE QUE CREARAMOS EL CONTROLADOR DE LA API
 	consultarAPI(); //consulta la api en el backend php
 
 }
@@ -138,6 +141,7 @@ const consultarAPI = async() =>{
 	}
 }
 
+//4- mostramos los servicios en el html de la api
 const mostrarServicios = (servicios) =>{
 	/*iteramos sobre el json*/
 	servicios.forEach((e) =>{

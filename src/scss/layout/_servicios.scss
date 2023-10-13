@@ -1,0 +1,40 @@
+@use 'base/variables' as v;
+@use 'base/mixins' as m;
+
+.listado-servicios{
+    display: grid; //para tener separacion hacia abajo en movil
+    gap: 2rem;
+
+    @include m.tablet{
+        @include m.grid(2, 1rem);
+    }
+
+    .servicio{
+        background-color: v.$blanco;
+        padding: 1rem;
+        border-radius: 1rem;
+        transition-property: transform;//creamos la animacion para la propiedad transform
+        transition-duration: 300ms; //duracion de la transicion .3s
+        text-align: center;
+        border: 0.3rem solid v.$azul; //creamos el borde de color para el elemento
+        @include m.tablet{
+            text-align: center;
+        }
+
+        &:hover{
+            transform: scale(1.1);//aumentamos la escala al pasar el puntero sobre el elemento
+        }
+
+        p{
+             color: v.$negro;
+             margin: 0 0 calc(v.$separacion / 4) 0; //reducimos la separacion en el contenedor
+        }
+
+        .precio-servicio{
+            color: v.$azul;
+            font-weight: v.$bold;
+            font-size: 3rem;
+            margin: 0;
+        }
+    }
+}
