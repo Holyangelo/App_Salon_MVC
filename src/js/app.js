@@ -4,7 +4,13 @@ let paso = 1;
 const inicial = 1;
 const final = 3;
 
-//
+//5- creamos el objeto de la cita
+const cita = {
+	nombre: '',
+	fecha: '',
+	hora: '',
+	servicios: []
+}
 
 /*DOMContentLoaded – el navegador HTML está completamente cargado y 
 el árbol DOM está construido, pero es posible que los recursos externos como <img> 
@@ -141,6 +147,36 @@ const consultarAPI = async() =>{
 	}
 }
 
+//6 - creamos el metodo de seleccion de servicio
+const seleccionarServicio = (servicio) => {
+	//7- crear un selector para el id de servicio
+	const { id } = servicio;
+	//6-desestructuramos el arreglo de servicios para proceder a llenarlo
+	const { servicios } = cita;
+	/*8-movemos el selector de divServicio */
+	const divServicio = document.querySelector(`[data-id-servicio="${id}"]`);
+	/*8- comprobar si un servicio ya fue agregado */
+	/*usamos el metodo some(clave => clave (comparador) valor a comparar) */
+	if (servicios.some(agregado => agregado.id === id)) {
+		//eliminar servicios de la seleccion o filtrarlo
+		cita.servicios = servicios.filter(agregado => agregado.id !== id);
+		divServicio.classList.remove("seleccionado");
+	} else {
+		/* 8 - Movemos agregar a esta condicion */
+		cita.servicios = [...servicios, servicio];
+		/*8-movemos el classlist add */
+		divServicio.classList.add("seleccionado");
+	}
+	//6-IMPORTANTE! reescribo el arreglo de servicios en cita
+	//pero debo generar una copia de los servicios agregados usando "..."
+	// y luego le agrego el nuevo servicio
+	//cita.servicios = [...servicios, servicio];
+	//7- creamos un queryselecto para el id de servicio
+	//const divServicio = document.querySelector(`[data-id-servicio="${id}"]`);
+	//divServicio.classList.add("seleccionado");
+			console.log(cita);
+	}
+
 //4- mostramos los servicios en el html de la api
 const mostrarServicios = (servicios) =>{
 	/*iteramos sobre el json*/
@@ -160,6 +196,10 @@ const mostrarServicios = (servicios) =>{
 		const servicioDiv = document.createElement("DIV");
 		servicioDiv.classList.add("servicio");
 		servicioDiv.dataset.idServicio = id;
+		//5 - agregar al objeto de cita
+		servicioDiv.onclick = () => { //debemos hacerlo mediante un callback
+			seleccionarServicio(e); //enviamos el servicio "e"
+		};
 		/*colocamos los atributos dentro del contenedor*/
 		servicioDiv.appendChild(nombreServicio);
 		servicioDiv.appendChild(precioServicio);
