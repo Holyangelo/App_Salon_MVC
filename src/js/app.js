@@ -412,7 +412,7 @@ const reservarCita = async () => {
 			}, 3000);
 		}
 	} catch (error) {
-		console.log(error);
+		mostrarAlerta(false, "Ha ocurrido un error al reservar la cita");
 	}
 }
 
