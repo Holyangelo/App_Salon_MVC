@@ -36,6 +36,7 @@
 				type="date" 
 				id="fecha" 
 				name="fecha"
+				min="<?php echo date("Y-m-d", strtotime("+1 day")); ?>" 
 				required="">
 			</div>
 			<div class="campo">
@@ -46,9 +47,10 @@
 				name="hora"
 				required="">
 			</div>
+			<input type="hidden" name="id" id="id" value ="<?php echo $_SESSION["id"]; ?>" disabled>
 		</form>
 	</div>
-	<div id="paso-3" class="seccion">
+	<div id="paso-3" class="seccion contenido-resumen">
 		<h2>Resumen</h2>
 		<p class="text-center">Verifica que la informacion sea correcta</p>
 	</div>

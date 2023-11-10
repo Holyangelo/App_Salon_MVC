@@ -57,5 +57,8 @@ $router->get('/cita', [CitaController::class, 'index']);
 /* 6.- CITAS API */
 $router->get('/api/servicios', [APIController::class, 'index']);
 
+//POST
+$router->post('/api/citas', [APIController::class, 'guardar']);
+
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

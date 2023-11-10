@@ -3,8 +3,8 @@
 namespace Controllers;
 
 /*Importamos */
-use MVC\Router;
 use Model\Servicio;
+use Model\Cita as Cita;
 
 /*Main Class*/
 class APIController{
@@ -14,6 +14,18 @@ class APIController{
 		$servicios = Servicio::all();
 		//codificamos a formato JSON
 		echo json_encode($servicios);
+	}
+
+	public static function guardar(){
+		// metodos static heredados no requerimos instanciarlos
+		if ($_SERVER["REQUEST_METHOD"] === "POST") {
+			$cita = new Cita($_POST);
+			//intentamos guardar
+			$resultado = $cita->guardar();
+			// codificamos a formato JSON
+			//enviamos respuesta codificada en json
+			echo json_encode($resultado);
+		}
 	}
 }
 ?>
