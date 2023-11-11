@@ -12,27 +12,6 @@
     <!--<link rel="stylesheet" href="css/tailwind.css">-->
 </head>
 <body>
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Bienvenido! <?php echo "<span class='fw-bold'>".$_SESSION["nombre"]."</span>"; ?></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse d-flex" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Opciones
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Administración</a></li>
-            <li><a class="dropdown-item" href="#">Cerrar Sesión</a></li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
     <div class="contenedor-app">
         <div class="imagen"></div>
         <div class="app">

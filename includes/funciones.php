@@ -12,3 +12,11 @@ function s($html) : string {
     $s = htmlspecialchars($html);
     return $s;
 }
+
+//funcion que valida autenticacion
+function isAuth() : void {
+    if(!isset($_SESSION["login"])){
+        //si la variable de session login no existe o es false
+        header("Location:/");
+    }
+}

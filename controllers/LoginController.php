@@ -67,14 +67,14 @@ class LoginController{
 
 	//Creamos el metodo para cerrar sesion
 	public static function logout(Router $router){
-		if(!$_SESSION['login']){
+		session_start();
+		if($_SESSION['login']){
+			$_SESSION['login'] = false;
+			$_SESSION = [];
+			session_destroy();
 			header('Location:/');
 		}else{
-		session_start();
-		$_SESSION['login'] = false;
-		$_SESSION = [];
-		session_destroy();
-		header('Location:/');
+		header('Location:/cita');
 	}
 	}
 

@@ -402,7 +402,7 @@ const reservarCita = async () => {
 
 		const response = await fetch(url, options);
 		const resultado = await response.json();
-		if (resultado.resultado === true) {
+		if (resultado.citaServicio.resultado && resultado.resultado.resultado === true) {
 			mostrarAlerta(true, "Cita Reservada");
 			const btn = document.querySelector(".boton");
 			btn.remove();
@@ -410,6 +410,8 @@ const reservarCita = async () => {
 			setTimeout(() => {
 				window.location.reload();
 			}, 3000);
+		} else {
+			mostrarAlerta(false, resultado.msg);
 		}
 	} catch (error) {
 		mostrarAlerta(false, "Ha ocurrido un error al reservar la cita");
