@@ -59,6 +59,9 @@ class Router
         // entonces incluimos la vista en el layout
         include_once __DIR__ . "/views/$view.php";
         $contenido = ob_get_clean(); // Limpia el Buffer
+        if($view === "admin/index"){
+            return require_once __DIR__ . "/views/layout-admin.php";
+        }
         include_once __DIR__ . '/views/layout.php';
     }
 }

@@ -20,5 +20,12 @@ class Servicio extends ActiveRecord{
 		$this->precio = $args['precio'] ?? '';
 	}
 
+	 public static function countServices(){
+        $sql = "SELECT COUNT(*) FROM ". static::$tabla;
+        $query = self::$db->query($sql);
+        $result =  $query->fetch_assoc();
+        return $result['COUNT(*)'];
+    }
+
 }
 ?>

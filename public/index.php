@@ -7,6 +7,7 @@ use MVC\Router;
 use Controllers\LoginController;
 use Controllers\CitaController;
 use Controllers\APIController;
+use Controllers\AdminController;
 
 /*Router instancia*/
 $router = new Router();
@@ -59,6 +60,10 @@ $router->get('/api/servicios', [APIController::class, 'index']);
 
 //POST
 $router->post('/api/citas', [APIController::class, 'guardar']);
+
+/* 7.- ADMIN */
+//GET
+$router->get('/admin', [AdminController::class, 'index']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

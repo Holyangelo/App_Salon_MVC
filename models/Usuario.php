@@ -150,6 +150,11 @@ class Usuario extends ActiveRecord{
 		}
 	}
 
-
+	public static function countActiveUser(){
+		$sql =  "SELECT COUNT(*) FROM ". static::$tabla ." WHERE confirmado = true";
+		$query = self::$db->query($sql);
+		$result = $query->fetch_assoc();
+		return intval($result['COUNT(*)']);
+	}
 }
 ?>

@@ -25,5 +25,19 @@ class Cita extends ActiveRecord{
         $this->hora = $args["hora"] ?? "";
         $this->usuarioId = $args["usuarioId"] ?? null;
     }
+
+    public static function countCita(){
+        $sql = "SELECT COUNT(*) FROM ". static::$tabla . " WHERE fecha > now();";
+        $query = self::$db->query($sql);
+        $result = $query->fetch_assoc();
+        return $result['COUNT(*)'];
+    }
+
+    public static function countCitaOut(){
+        $sql = "SELECT COUNT(*) FROM ". static::$tabla . " WHERE fecha < now();";
+        $query = self::$db->query($sql);
+        $result = $query->fetch_assoc();
+        return $result['COUNT(*)'];
+    }
 }
 ?>

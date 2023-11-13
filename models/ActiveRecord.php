@@ -123,6 +123,12 @@ class ActiveRecord {
         return array_shift( $resultado ) ;
     }
 
+    // Consulta Libre (cuando los metodos no son suficientes)
+    public static function SQL($sql) {
+        $resultado = self::consultarSQL($sql);
+        return $resultado;
+    }
+
     // Obtener Registros con cierta cantidad
     public static function get($limite) {
         $query = "SELECT * FROM " . static::$tabla . " LIMIT ${limite}";

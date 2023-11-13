@@ -726,18 +726,6 @@ select {
   --tw-backdrop-sepia:  ;
 }
 
-.collapse {
-  visibility: collapse;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
-.ms-auto {
-  margin-inline-start: auto;
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
