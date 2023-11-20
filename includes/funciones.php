@@ -20,3 +20,18 @@ function isAuth() : void {
         header("Location:/");
     }
 }
+
+function esUltimo($actual, $proximo){
+    if($actual !== $proximo){
+        //cuando el valor actual sea diferente al valor proximno significa que vamos a cambiar
+        // de columna o proximo registro
+        return true;
+    }
+    return false;
+}
+
+function isAdmin(){
+    if (!isset($_SESSION['admin'])) {
+       header("Location: /"); 
+    }
+}

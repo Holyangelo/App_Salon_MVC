@@ -41,7 +41,7 @@ class LoginController{
 							/*Si es admin debemos guardar el valor en session*/
 							$_SESSION['admin'] = $usuario->admin ?? null;
 							/*Redireccionamos a admin*/
-							header("Location:/admin");
+							header("Location:/admin/");
 						}else{
 							/*Redireccionamos a citas si es cliente*/
 							header("Location:/cita");

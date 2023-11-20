@@ -8,6 +8,7 @@ use Controllers\LoginController;
 use Controllers\CitaController;
 use Controllers\APIController;
 use Controllers\AdminController;
+use Controllers\ServicioController;
 
 /*Router instancia*/
 $router = new Router();
@@ -60,10 +61,26 @@ $router->get('/api/servicios', [APIController::class, 'index']);
 
 //POST
 $router->post('/api/citas', [APIController::class, 'guardar']);
+$router->post('/api/eliminar', [APIController::class, 'eliminar']);
 
 /* 7.- ADMIN */
 //GET
-$router->get('/admin', [AdminController::class, 'index']);
+$router->get('/admin/', [AdminController::class, 'index']);
+$router->get('/admin/citas', [AdminController::class, 'citas']);
+$router->get('/admin/servicios', [AdminController::class, 'servicios']);
+$router->get('/admin/usuarios', [AdminController::class, 'usuarios']);
+
+//POST
+$router->post('/admin/citas', [AdminController::class, 'citas']);
+$router->post('/admin/servicios', [AdminController::class, 'servicios']);
+
+/* 8.- SERVICIOS */
+//GET
+$router->get('/servicios/obtener', [ServicioController::class,'GET_Servicio']);
+//POST
+$router->post('/servicios/crear', [ServicioController::class,'crear']);
+$router->post('/servicios/actualizar', [ServicioController::class,'actualizar']);
+$router->post('/servicios/eliminar', [ServicioController::class,'eliminar']);
 
 // Comprueba y valida las rutas, que existan y les asigna las funciones del Controlador
 $router->comprobarRutas();

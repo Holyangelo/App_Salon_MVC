@@ -24,7 +24,8 @@ class Router
         //session_start();
 
         // Arreglo de rutas protegidas...
-        // $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', '/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
+        // $rutas_protegidas = ['/admin', '/propiedades/crear', '/propiedades/actualizar', 
+        //'/propiedades/eliminar', '/vendedores/crear', '/vendedores/actualizar', '/vendedores/eliminar'];
 
         // $auth = $_SESSION['login'] ?? null;
 
@@ -59,7 +60,8 @@ class Router
         // entonces incluimos la vista en el layout
         include_once __DIR__ . "/views/$view.php";
         $contenido = ob_get_clean(); // Limpia el Buffer
-        if($view === "admin/index"){
+        $rutasAdministrativas = ["admin/index", "admin/servicios", "admin/citas", "admin/usuarios"];
+        if(in_array($view, $rutasAdministrativas)) {
             return require_once __DIR__ . "/views/layout-admin.php";
         }
         include_once __DIR__ . '/views/layout.php';

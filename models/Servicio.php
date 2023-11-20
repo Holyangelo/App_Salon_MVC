@@ -17,7 +17,23 @@ class Servicio extends ActiveRecord{
 	public function __construct($args = []) {
 		$this->id = $args['id'] ?? null;
 		$this->nombre = $args['nombre'] ?? '';
-		$this->precio = $args['precio'] ?? '';
+		$this->precio = $args['precio'] ??  0;
+	}
+
+	public function validarServicio(){
+		$matches = null;
+		if (!$this->nombre) {
+			self::$alertas['error'][] = "El campo nombre no puede estar vacio";
+		}else if(strlen($this->nombre) < 1){
+			self::$alertas['error'][] = "Debes ingresar un nombre mas largo";
+		}
+		if (!$this->precio) {
+			self::$alertas['error'][] = "El campo precio no puede estar vacio";
+		}else if(strlen($this->precio) <= 1){
+			self::$alertas['error'][] = "Debes ingresar un precio mayor a 0";
+		}
+
+		return self::$alertas;
 	}
 
 	 public static function countServices(){
@@ -27,5 +43,9 @@ class Servicio extends ActiveRecord{
         return $result['COUNT(*)'];
     }
 
+	public static function getAllServices() {
+		$sql = 'SELECT * FROM '. static::$tabla;
+		return $query = self::consultarSQL($sql);
+	}
 }
 ?>

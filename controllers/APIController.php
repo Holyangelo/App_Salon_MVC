@@ -100,5 +100,40 @@ class APIController{
 			echo json_encode($respuesta);
 		}
 	}
+
+	public static function eliminar(){
+	if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+		if (isset($_POST['id'])){
+			$id = $_POST['id'];
+			//buscamos si existe el registro
+			$cita = Cita::find($id);
+			if ($cita){
+				//como ya cargamos los datos en el find del cita
+				//no necesitamos pasarle ningum parametro
+				if($cita->eliminar()){
+					$response = [
+						"status" => "OK",
+						"code" => 200,
+						"msg" => "Eliminado"
+					];
+
+					echo json_encode($response);
+					header("Refresh:2; url=page2.php".$_SERVER['HTTP_REFERER']);
+				}else{
+					$response = [
+						"status" => "Fail",
+						"code" => 400,
+						"msg" => "No se ha podido eliminar"
+					];
+
+					echo json_encode($response);
+					header("Refresh:2; url=page2.php".$_SERVER['HTTP_REFERER']);
+				}
+			}
+		}
+	}else{
+		$alerta = "";
+	}
+}
 }
 ?>

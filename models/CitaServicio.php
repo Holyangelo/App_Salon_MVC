@@ -14,5 +14,12 @@ class CitaServicio extends ActiveRecord{
         $this->citasId = $args["citasId"] ?? "";
         $this->serviciosId = $args["serviciosId"] ?? "";
     }
+
+    public static function getCountServices($id) {
+        $sql = "SELECT COUNT(citasId) FROM ".static::$tabla." WHERE serviciosId = " . $id;
+        $query = self::$db->query($sql);
+        $result = $query->fetch_assoc();
+        return $result["COUNT(citasId)"];
+    }
 }
 ?>
